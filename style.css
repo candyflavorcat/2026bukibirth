@@ -15,6 +15,7 @@ body {
 #flipbook {
     margin: 0 auto;
     background-color: transparent;
+    pointer-events: auto;
 }
 
 /* 개별 페이지 스타일 */
@@ -61,7 +62,10 @@ body {
     }
 }
 
-.flipbook .turn-page,
-.flipbook .turn-region {
+/* turn.js 기본 인터랙션 제거 */
+.turn-page,
+.turn-page-wrapper {
     pointer-events: none;
 }
+
+
