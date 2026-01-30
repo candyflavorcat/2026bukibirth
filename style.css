@@ -55,7 +55,7 @@ body {
     font-weight: bold;
     text-align: center;
     cursor: pointer;
-    border-radius: 0 10px 10px 0; /* 오른쪽만 둥글게 */
+    border-radius: 0 10px 10px 0;
     box-shadow: 3px 2px 8px rgba(0,0,0,0.1);
     writing-mode: vertical-rl; /* 세로 쓰기 */
     transition: all 0.2s ease;
