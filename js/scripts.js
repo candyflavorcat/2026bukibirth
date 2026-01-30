@@ -31,18 +31,6 @@ $(document).ready(function() {
                 'background-image': `url(${imgPath})`
             });
 
-            // 페이지 클릭 네비게이션
-            $page.on('click', function(e) {
-                const pageWidth = $(this).width();
-                const clickX = e.offsetX;
-
-                if (clickX < pageWidth / 2) {
-                    $book.turn('previous');
-                } else {
-                    $book.turn('next');
-                }
-            });
-
             
 
 
@@ -96,6 +84,18 @@ $(document).ready(function() {
         // 초기 실행 시 사이즈 조정
         resizeFlipbook();
     }
+
+    $book.on('click', '.page', function(e) {
+        const pageWidth = $(this).width();
+        const clickX = e.offsetX;
+
+        if (clickX < pageWidth / 2) {
+            $book.turn('previous');
+        } else {
+            $book.turn('next');
+        }
+    });
+
 
     buildPages();
     initFlipbook();
