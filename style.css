@@ -24,7 +24,6 @@ body {
     background-color: #fff;
     background-size: 100% 100%; /* 이미지를 페이지에 꽉 채움 */
     background-repeat: no-repeat;
-    background-position: center;
     box-shadow: inset -5px 0 20px rgba(0,0,0,0.1); /* 책 안쪽 접히는 느낌 */
 }
 
