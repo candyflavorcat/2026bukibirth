@@ -15,7 +15,6 @@ body {
 #flipbook {
     margin: 0 auto;
     background-color: transparent;
-    pointer-events: auto;
 }
 
 /* 개별 페이지 스타일 */
