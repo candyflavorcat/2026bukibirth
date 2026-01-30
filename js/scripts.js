@@ -77,9 +77,29 @@ $(document).ready(function() {
             acceleration: true,
             // 모바일/태블릿 대응을 위해 디스플레이 모드 설정
             display: $(window).width() < 1000 ? 'single' : 'double'
+
+            // 1. 모서리 감지 영역을 0으로 설정 (핵심)
+            // 이 설정을 통해 마우스를 올려도 반응할 영역이 없어집니다.
+            pages: FlipbookConfig.totalPage,
+            elevation: 0,
+        
+            // 2. 턴 이벤트 강제 차단
+            when: {
+                start: function(event, pageObject, corner) {
+                    if (corner) {
+                        event.preventDefault();
+                    }
+                },
+                turning: function(event, page, view) {
+                    // 직접 클릭 로직 외의 의도치 않은 페이지 넘김 방지
+                }
+            }
             
         });
 
+        $('.page').css('cursor', 'default');
+
+        
         $book.turn('peel', false);
 
         // 초기 실행 시 사이즈 조정
