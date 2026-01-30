@@ -81,6 +81,7 @@ $(document).ready(function() {
             display: $(window).width() < 1000 ? 'single' : 'double'
 
             peel: false
+            gradients: false
         });
 
         // 초기 실행 시 사이즈 조정
