@@ -8,6 +8,13 @@ const FlipbookConfig = {
     bookWidth: 1000,        // 전체 가로 길이 (2페이지 펼침 기준)
     bookHeight: 700,        // 세로 길이
     aspectRatio: 1000 / 700,
+
+    // 북마크 설정 (페이지 번호 : 라벨명)
+    bookmarks: {
+        3: "시작하며",
+        7: "중요 포인트",
+        11: "마치며"
+    }
     
 };
 
