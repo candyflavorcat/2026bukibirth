@@ -7,18 +7,21 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden; /* 스크롤 방지 */
     font-family: 'Apple SD Gothic Neo', sans-serif;
 }
 
 /* 플립북 컨테이너 */
 #flipbook {
+    margin: 0 auto;
     background-color: transparent;
 }
 
 /* 개별 페이지 스타일 */
 .page {
     background-color: #fff;
-    background-size: 100% 100%; /* 이미지를 페이지에 꽉 채움 */
+    background-size: contain; /* cover보다 contain이 이미지 잘림이 적습니다 */
+    background-position: center;
     background-repeat: no-repeat;
     box-shadow: inset -5px 0 20px rgba(0,0,0,0.1); /* 책 안쪽 접히는 느낌 */
 }
@@ -47,4 +50,13 @@ body {
 /* 페이지가 넘어갈 때 뒷면 하얗게 방지 */
 .turn-page {
     background-color: #ccc;
+}
+
+/* 북마크가 작은 화면에서도 너무 크지 않게 조정 */
+@media (max-width: 768px) {
+    .bookmark {
+        padding: 4px 8px;
+        font-size: 11px;
+        top: 30px;
+    }
 }
