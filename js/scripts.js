@@ -1,5 +1,5 @@
 const FlipbookConfig = {
-    totalPage: 120, // 실제 이미지 개수로 수정하세요
+    totalPage: 70, // 실제 이미지 개수로 수정하세요
     imagePath: 'pages/page', 
     extension: '.jpg',
     ratio: 1.414,
