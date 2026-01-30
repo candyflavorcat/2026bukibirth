@@ -8,12 +8,6 @@ const FlipbookConfig = {
     bookWidth: 1000,        // 전체 가로 길이 (2페이지 펼침 기준)
     bookHeight: 700,        // 세로 길이
     aspectRatio: 1000 / 700,
-    
-    // 북마크 설정 (페이지 번호 : 라벨명)
-    //bookmarks: {
-        //3: "시작하며",
-        //7: "중요 포인트",
-        //10: "마치며"
     }
 };
 
@@ -30,20 +24,6 @@ $(document).ready(function() {
             const $page = $('<div class="page"></div>').css({
                 'background-image': `url(${imgPath})`
             });
-
-
-            // 해당 페이지에 북마크 설정이 있다면 추가
-            if (FlipbookConfig.bookmarks[i]) {
-                const label = FlipbookConfig.bookmarks[i];
-                const $bookmark = $(`<div class="bookmark">🔖 ${label}</div>`);
-                
-                $bookmark.on('click', function(e) {
-                    e.stopPropagation(); // 페이지 넘김 이벤트 간섭 방지
-                    $book.turn('page', i);
-                });
-                
-                $page.append($bookmark);
-            }
 
             $book.append($page);
         }
