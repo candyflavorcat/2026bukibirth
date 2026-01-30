@@ -15,8 +15,8 @@ body {
 #flipbook-wrapper {
     position: relative;
     display: inline-flex;
-    flex-direction: column;  //위아래로 배치
-    align-items: center;     //가로축 기준 중앙 정렬
+    flex-direction: column;  /* 위아래로 배치 */
+    align-items: center;     /* 가로축 기준 중앙 정렬 */
     justify-content: center;
 }
 
@@ -29,7 +29,7 @@ body {
 /* 개별 페이지 스타일 */
 .page {
     background-color: #fff;
-    background-size: contain; 
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: inset 0px 0 20px rgba(0,0,0,0.1);
@@ -38,10 +38,10 @@ body {
 /* 북마크 컨테이너: 플립북 오른쪽 끝에 고정 */
 #bookmark-container {
     position: absolute;
-    left: 100%; //플립북이 끝나는 지점부터 시작
+    left: 100%; /* 플립북이 끝나는 지점부터 시작 */
     top: 20;
     height: 100%;
-    z-index: 100; //페이지보다 위에 표시
+    z-index: 100; /* 페이지보다 위에 표시 */
 }
 
 /* 북마크 개별 스타일 */
@@ -55,9 +55,9 @@ body {
     font-weight: bold;
     text-align: center;
     cursor: pointer;
-    border-radius: 0 10px 10px 0; //오른쪽만 둥글게
+    border-radius: 0 10px 10px 0; /* 오른쪽만 둥글게 */
     box-shadow: 3px 2px 8px rgba(0,0,0,0.1);
-    writing-mode: vertical-rl; //세로 쓰기
+    writing-mode: vertical-rl; /* 세로 쓰기 */
     transition: all 0.2s ease;
     white-space: nowrap;
     display: block;
@@ -65,7 +65,7 @@ body {
 
 .bookmark-fixed:hover {
     background: #9575cd;
-    width: 60px; //마우스 올리면 살짝 더 삐져나옴
+    width: 60px; /* 마우스 올리면 살짝 더 삐져나옴 */
 }
 
 
@@ -74,7 +74,7 @@ body {
     margin-top: 30px;
     font-size: 16px;
     color: #555;
-    background: rgba(255, 255, 255, 0.6); //반투명 흰색
+    background: rgba(255, 255, 255, 0.6); /* 반투명 흰색 */
     padding: 8px 20px;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
