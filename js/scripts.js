@@ -77,6 +77,25 @@ $(document).ready(function() {
             acceleration: true,
             // 모바일/태블릿 대응을 위해 디스플레이 모드 설정
             display: $(window).width() < 1000 ? 'single' : 'double'
+
+            when: {
+            // 1. 페이지 이동이 완료되면 하단 숫자를 변경
+                turned: function(event, page, view) {
+                    let displayPage;
+                    if ($book.turn('display') === 'single') {
+                        displayPage = page;
+                    } else {
+                        // 펼침면(double)일 때 번호 표시 로직 (예: 2-3)
+                        if (page === 1) displayPage = "1";
+                        else if (page >= FlipbookConfig.totalPage) displayPage = FlipbookConfig.totalPage;
+                        else displayPage = `${page}-${page + 1}`;
+                    }
+                    $('#page-number').text(`${displayPage} / ${FlipbookConfig.totalPage}`);
+                },
+
+            }
+
+            
         });
 
         // 초기 실행 시 사이즈 조정
