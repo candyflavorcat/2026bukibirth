@@ -84,6 +84,12 @@ $(document).ready(function() {
         // 초기 실행 시 사이즈 조정
         resizeFlipbook();
 
+        $book.turn({
+            gradients: false,
+            autoCenter: true,
+            display: 'double'
+        });
+
         $book.on('click', function(e) {
             const offset = $book.offset();
             const x = e.pageX - offset.left;
