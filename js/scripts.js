@@ -77,7 +77,6 @@ $(document).ready(function() {
             acceleration: true,
             // 모바일/태블릿 대응을 위해 디스플레이 모드 설정
             display: $(window).width() < 1000 ? 'single' : 'double'
-
         });
 
         // 초기 실행 시 사이즈 조정
