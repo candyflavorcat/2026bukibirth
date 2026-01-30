@@ -34,27 +34,51 @@ body {
     box-shadow: inset 0px 0 20px rgba(0,0,0,0.1);
 }
 
+/* 북마크가 잘리지 않도록 설정 */
+.turn-page {
+    overflow: visible !important; /* 자식 요소가 밖으로 나갈 수 있게 허용 */
+}
+
 /* 북마크(탭) 디자인 */
 .bookmark {
     position: absolute;
-    top: 50px;
-    right: -15px; /* 페이지 밖으로 살짝 튀어나오게 */
-    background: #7b1fa2;
+    top: 60px; /* 위에서부터의 위치 */
+    right: -45px; /* 페이지 오른쪽 밖으로 완전히 밀어냄 */
+    width: 45px;
+    height: 35px;
+    background: #b39ddb; /* 부드러운 연보라색 */
     color: #fff;
-    padding: 6px 12px;
-    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
     cursor: pointer;
-    border-radius: 0 4px 4px 0;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    z-index: 100;
+    
+    /* 인덱스 탭 모양 만들기 (오른쪽만 둥글게) */
+    border-radius: 0 8px 8px 0;
+    box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.1);
+    
+    /* 텍스트 세로 쓰기 효과 (글자 수에 따라 조정 가능) */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    padding: 10px 5px;
+    
     transition: all 0.3s ease;
+    z-index: 999;
 }
 
+/* 마우스를 올렸을 때 효과 */
 .bookmark:hover {
-    right: -20px;
-    background: #ff5252;
+    right: -50px; /* 살짝 더 튀어나옴 */
+    background: #9575cd; /* 좀 더 진한 보라색 */
+    width: 50px;
 }
 
+/* 북마크마다 위치(높이)를 다르게 주기 위한 설정 (JS에서 추가 처리) */
+.bookmark.pos-1 { top: 40px; }
+.bookmark.pos-2 { top: 100px; }
+.bookmark.pos-3 { top: 160px; }
 /* 페이지가 넘어갈 때 뒷면 하얗게 방지 */
 .turn-page {
     background-color: #ccc;
