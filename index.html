@@ -2,15 +2,22 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>My FlipBook</title>
+  <title>Flipbook</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="book"></div>
+<div id="book">
+  <div id="leftPage" class="page">
+    <img id="leftImage">
+  </div>
+  <div id="rightPage" class="page">
+    <img id="rightImage">
+  </div>
+</div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="turnjs/turn.min.js"></script>
+<div id="pageCounter"></div>
+
 <script src="script.js"></script>
 </body>
 </html>
