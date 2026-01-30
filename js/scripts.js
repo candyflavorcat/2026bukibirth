@@ -1,81 +1,71 @@
+/**
+ * 플립북 설정 관리 객체
+ */
 const FlipbookConfig = {
-    totalPage: 120,          
-    imagePath: 'pages/page', 
-    extension: '.jpg',       
-    ratio: 1.414,            // 가로 대비 세로 비율 (A4 기준 1.414)
-    bookmarks: { 1: "표지", 10: "목차", 120: "끝" }
+    totalPage: 70,          // 전체 이미지 장수
+    imagePath: 'pages/page', // 이미지 경로 및 파일명 앞부분
+    extension: '.jpg',      // 확장자
+    bookWidth: 1000,        // 전체 가로 길이 (2페이지 펼침 기준)
+    bookHeight: 700,        // 세로 길이
+    
+    // 북마크 설정 (페이지 번호 : 라벨명)
+    bookmarks: {
+        3: "시작하며",
+        7: "중요 포인트",
+        10: "마치며"
+    }
 };
 
 $(document).ready(function() {
     const $book = $('#flipbook');
 
-    // 1. 페이지 생성
-    for (let i = 1; i <= FlipbookConfig.totalPage; i++) {
-        const pageNum = String(i).padStart(3, '0');
-        const $page = $('<div class="page"></div>').css({
-            'background-image': `url(${FlipbookConfig.imagePath}${pageNum}${FlipbookConfig.extension})`,
-            'background-size': '100% 100%'
+    // 1. 페이지 자동 생성 로직
+    function buildPages() {
+        for (let i = 1; i <= FlipbookConfig.totalPage; i++) {
+            const pageNum = String(i).padStart(3, '0');
+            const imgPath = `${FlipbookConfig.imagePath}${pageNum}${FlipbookConfig.extension}`;
+            
+            // 페이지 요소 생성
+            const $page = $('<div class="page"></div>').css({
+                'background-image': `url(${imgPath})`
+            });
+
+            // 해당 페이지에 북마크 설정이 있다면 추가
+            if (FlipbookConfig.bookmarks[i]) {
+                const label = FlipbookConfig.bookmarks[i];
+                const $bookmark = $(`<div class="bookmark">🔖 ${label}</div>`);
+                
+                $bookmark.on('click', function(e) {
+                    e.stopPropagation(); // 페이지 넘김 이벤트 간섭 방지
+                    $book.turn('page', i);
+                });
+                
+                $page.append($bookmark);
+            }
+
+            $book.append($page);
+        }
+    }
+
+    // 2. 플립북 초기화
+    function initFlipbook() {
+        $book.turn({
+            width: FlipbookConfig.bookWidth,
+            height: FlipbookConfig.bookHeight,
+            autoCenter: true,
+            duration: 800,     // 넘기는 속도 (밀리초)
+            gradients: true,   // 입체적인 그림자 효과
+            acceleration: true // 가속도 센서 활용 (모바일)
         });
-        $book.append($page);
     }
 
-    // 2. 핵심: 반응형 크기 계산 함수
-    function resizeBook() {
-        const winW = $(window).width();
-        const winH = $(window).height();
-        
-        // 여백 제외 실제 가용한 최대 영역 (90% 사용)
-        const maxW = winW * 0.9;
-        const maxH = winH * 0.9;
+    // 실행
+    buildPages();
+    initFlipbook();
 
-        let finalW, finalH;
-
-        // 세로 모드 체크 (화면 너비가 좁을 때)
-        if (winW < winH || winW < 768) {
-            $book.turn('display', 'single'); // 한 페이지씩 보기
-            finalW = maxW;
-            finalH = finalW * FlipbookConfig.ratio;
-
-            // 높이가 화면을 벗어나면 높이 기준으로 재계산
-            if (finalH > maxH) {
-                finalH = maxH;
-                finalW = finalH / FlipbookConfig.ratio;
-            }
-        } else {
-            // 가로 모드 (두 페이지 펼침)
-            $book.turn('display', 'double');
-            finalH = maxH;
-            finalW = (finalH / FlipbookConfig.ratio) * 2;
-
-            // 너비가 화면을 벗어나면 너비 기준으로 재계산
-            if (finalW > maxW) {
-                finalW = maxW;
-                finalH = (finalW / 2) * FlipbookConfig.ratio;
-            }
-        }
-
-        // turn.js에 계산된 크기 적용
-        $book.turn('size', finalW, finalH);
-    }
-
-    // 3. 플립북 초기화
-    $book.turn({
-        acceleration: true,
-        gradients: true,
-        elevation: 50,
-        duration: 1000,
-        when: {
-            turned: function(e, page) {
-                console.log("Current page: " + page);
-            }
-        }
+    // 키보드 방향키로 페이지 넘기기 기능 추가
+    $(window).keydown(function(e) {
+        if (e.keyCode === 37) $book.turn('previous'); // 왼쪽 방향키
+        else if (e.keyCode === 39) $book.turn('next'); // 오른쪽 방향키
     });
-
-    // 4. 이벤트 바인딩 (리사이즈 및 회전)
-    $(window).on('resize', function() {
-        resizeBook();
-    });
-
-    // 초기 실행
-    resizeBook();
 });
