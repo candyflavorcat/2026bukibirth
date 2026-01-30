@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: radial-gradient(circle, #e8daff 0%, #f3e5f5 50%, #fffff 100%) !important;
+    background: radial-gradient(circle, #f3e5f5 0%, #ffffff 70%) !important;
     display: flex;
     justify-content: center;
     align-items: center;
