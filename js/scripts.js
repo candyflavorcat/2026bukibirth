@@ -31,7 +31,6 @@ $(document).ready(function() {
             
             const $page = $('<div class="page"></div>').css({
                 'background-image': `url(${imgPath})`,
-                'background-size': '100% 100%' // 이미지 꽉 차게 설정
             });
             
             $book.append($page);
