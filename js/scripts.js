@@ -1,18 +1,9 @@
-/**
- * 플립북 설정 관리 객체
- */
 const FlipbookConfig = {
     totalPage: 120,          
     imagePath: 'pages/page', 
     extension: '.jpg',       
     ratio: 1.414,            // 가로 대비 세로 비율 (A4 기준 1.414)
-    
-    // 북마크 설정 (페이지 번호 : 라벨명)
-    bookmarks: {
-        3: "시작하며",
-        7: "중요 포인트",
-        10: "마치며"
-    }
+    bookmarks: { 1: "표지", 10: "목차", 120: "끝" }
 };
 
 $(document).ready(function() {
@@ -87,11 +78,4 @@ $(document).ready(function() {
 
     // 초기 실행
     resizeBook();
-});
-
-    // 키보드 방향키로 페이지 넘기기 기능 추가
-    $(window).keydown(function(e) {
-        if (e.keyCode === 37) $book.turn('previous'); // 왼쪽 방향키
-        else if (e.keyCode === 39) $book.turn('next'); // 오른쪽 방향키
-    });
 });
