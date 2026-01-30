@@ -2,14 +2,16 @@
 body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* 스크롤바 방지 */
     background: radial-gradient(circle, #444 0%, #111 100%);
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     font-family: 'Apple SD Gothic Neo', sans-serif;
+    touch-action: none; /* 브라우저 기본 제스처 끄기 */
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden; /* 스크롤바 숨기기 */
 }
 
 /* 플립북 컨테이너 */
@@ -52,14 +54,18 @@ body {
 }
 
 #flipbook-wrapper {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* 모바일 터치 시 파란색 하이라이트 제거 */
-* {
-    -webkit-tap-highlight-color: transparent;
+/* 모바일에서 북마크가 너무 크지 않게 조절 */
+@media (max-width: 600px) {
+    .bookmark {
+        padding: 4px 8px;
+        font-size: 10px;
+        top: 20px;
+    }
 }
