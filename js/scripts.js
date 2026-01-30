@@ -39,19 +39,27 @@ $(document).ready(function() {
 
     // 화면 크기에 맞게 사이즈를 계산하고 적용하는 함수
     function resizeFlipbook() {
-        const containerWidth = $(window).width() * 0.9;
-        const containerHeight = $(window).height() * 0.8;
+    const isSingle = $book.turn('display') === 'single';
+    const currentAspectRatio = isSingle ? (FlipbookConfig.aspectRatio / 2) : FlipbookConfig.aspectRatio;
 
-        let width = containerWidth;
-        let height = width / FlipbookConfig.aspectRatio;
+    // 2. 컨테이너 여백 설정
+    const paddingW = $(window).width() < 600 ? 0.95 : 0.9;
+    const paddingH = $(window).width() < 600 ? 0.7 : 0.8;
 
-        if (height > containerHeight) {
-            height = containerHeight;
-            width = height * FlipbookConfig.aspectRatio;
-        }
+    const containerWidth = $(window).width() * paddingW;
+    const containerHeight = $(window).height() * paddingH;
 
-        $book.turn('size', width, height);
+    let width = containerWidth;
+    let height = width / currentAspectRatio;
+
+    // 3. 계산된 높이가 화면보다 크면 높이를 기준으로 너비를 재계산
+    if (height > containerHeight) {
+        height = containerHeight;
+        width = height * currentAspectRatio;
     }
+
+    $book.turn('size', width, height);
+}
 
     function initBookmarks() {
         const $container = $('#bookmark-container');
@@ -73,6 +81,9 @@ $(document).ready(function() {
     
 
     function initFlipbook() {
+
+        const isMobile = $(window).width() < 1000;
+        
         $book.turn({
             width: FlipbookConfig.bookWidth,
             height: FlipbookConfig.bookHeight,
@@ -96,7 +107,7 @@ $(document).ready(function() {
             } // when 끝
         }); // turn 끝
 
-        resizeFlipbook();
+        setTimeout(resizeFlipbook, 100);
 
         // 클릭 이벤트 핸들러
         $book.on('click', function(e) {
