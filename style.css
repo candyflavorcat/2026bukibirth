@@ -1,15 +1,15 @@
 body {
+  margin: 0;
   background: #111;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }
 
 #book {
-  width: 900px;
-  height: 1200px;
+  width: 90vw;
+  height: 90vh;
 }
 
 #book img {
@@ -17,4 +17,3 @@ body {
   height: 100%;
   object-fit: contain;
 }
-
