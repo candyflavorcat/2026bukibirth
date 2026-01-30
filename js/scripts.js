@@ -7,6 +7,7 @@ const FlipbookConfig = {
     extension: '.jpg',      // 확장자
     bookWidth: 1000,        // 전체 가로 길이 (2페이지 펼침 기준)
     bookHeight: 700,        // 세로 길이
+    aspectRatio: 1000 / 700,
     
     // 북마크 설정 (페이지 번호 : 라벨명)
     bookmarks: {
@@ -47,52 +48,46 @@ $(document).ready(function() {
         }
     }
 
-    // 2. 반응형 사이즈 계산 함수 (추가)
-    function resizeBook() {
-        // 화면 너비의 90% 정도를 최대치로 잡습니다.
-        const windowWidth = $(window).width() * 0.9;
-        const windowHeight = $(window).height() * 0.8;
+    // 화면 크기에 맞게 사이즈를 계산하고 적용하는 함수
+    function resizeFlipbook() {
+        const containerWidth = $(window).width() * 0.9; // 화면 너비의 90% 사용
+        const containerHeight = $(window).height() * 0.8; // 화면 높이의 80% 사용
 
-        // 원본 비율 (1000 : 700) 계산
-        const ratio = FlipbookConfig.bookWidth / FlipbookConfig.bookHeight;
+        let width = containerWidth;
+        let height = width / FlipbookConfig.aspectRatio;
 
-        let width = windowWidth;
-        let height = width / ratio;
-
-        // 계산된 높이가 화면 높이를 초과할 경우 높이 기준으로 재계산
-        if (height > windowHeight) {
-            height = windowHeight;
-            width = height * ratio;
+        // 계산된 높이가 컨테이너보다 크면 높이 기준으로 재계산
+        if (height > containerHeight) {
+            height = containerHeight;
+            width = height * FlipbookConfig.aspectRatio;
         }
 
-        // turn.js에 사이즈 적용
+        // turn.js 사이즈 업데이트
         $book.turn('size', width, height);
     }
 
-   // 3. 플립북 초기화
     function initFlipbook() {
         $book.turn({
-            width: FlipbookConfig.bookWidth,
-            height: FlipbookConfig.bookHeight,
+            width: FlipbookConfig.baseWidth,
+            height: FlipbookConfig.baseHeight,
             autoCenter: true,
             duration: 800,
             gradients: true,
             acceleration: true,
-            // 모바일/작은 화면에서는 한 페이지씩 보이게 설정하고 싶다면 아래 옵션 참고
-            // display: $(window).width() < 1000 ? 'single' : 'double'
+            // 모바일/태블릿 대응을 위해 디스플레이 모드 설정
+            display: $(window).width() < 1000 ? 'single' : 'double'
         });
 
         // 초기 실행 시 사이즈 조정
-        resizeBook();
+        resizeFlipbook();
     }
 
-    // 실행
     buildPages();
     initFlipbook();
 
-    // 브라우저 리사이즈 시 대응
+    // 윈도우 리사이즈 이벤트 발생 시 호출
     $(window).on('resize', function() {
-        resizeBook();
+        resizeFlipbook();
     });
 
     // 키보드 방향키로 페이지 넘기기 기능 추가
