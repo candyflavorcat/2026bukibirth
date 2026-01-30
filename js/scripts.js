@@ -1,12 +1,12 @@
 /**
- * 플립북 설정 관리 객체
+ * 플립북 설정
  */
 const FlipbookConfig = {
     totalPage: 70,          // 전체 이미지 장수
-    imagePath: 'pages/page', // 이미지 경로 및 파일명 앞부분
-    extension: '.jpg',      // 확장자
-    bookWidth: 1000,        // 전체 가로 길이 (2페이지 펼침 기준)
-    bookHeight: 700,        // 세로 길이
+    imagePath: 'pages/page', 
+    extension: '.jpg',      
+    bookWidth: 1000,        
+    bookHeight: 700,       
     aspectRatio: 1000 / 700,
 
     // 북마크 설정 (페이지 번호 : 라벨명)
@@ -75,7 +75,7 @@ $(document).ready(function() {
 
     function initFlipbook() {
         $book.turn({
-            // 주의: baseWidth 대신 bookWidth 사용 (Config 객체 기준)
+
             width: FlipbookConfig.bookWidth,
             height: FlipbookConfig.bookHeight,
             autoCenter: true,
@@ -83,7 +83,7 @@ $(document).ready(function() {
             gradients: true,
             acceleration: true,
             display: $(window).width() < 1000 ? 'single' : 'double',
-            // 괄호 구조 수정됨
+
             when: {
                 turned: function(event, page, view) {
                     let displayPage;
