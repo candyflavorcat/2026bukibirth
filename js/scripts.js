@@ -26,82 +26,73 @@ $(document).ready(function() {
             const pageNum = String(i).padStart(3, '0');
             const imgPath = `${FlipbookConfig.imagePath}${pageNum}${FlipbookConfig.extension}`;
             
-            // 페이지 요소 생성
             const $page = $('<div class="page"></div>').css({
-                'background-image': `url(${imgPath})`
+                'background-image': `url(${imgPath})`,
+                'background-size': '100% 100%' // 이미지 꽉 차게 설정
             });
 
-
-            // 해당 페이지에 북마크 설정이 있다면 추가
             if (FlipbookConfig.bookmarks[i]) {
                 const label = FlipbookConfig.bookmarks[i];
                 const $bookmark = $(`<div class="bookmark">🔖 ${label}</div>`);
                 
                 $bookmark.on('click', function(e) {
-                    e.stopPropagation(); // 페이지 넘김 이벤트 간섭 방지
+                    e.stopPropagation();
                     $book.turn('page', i);
                 });
                 
                 $page.append($bookmark);
             }
-
             $book.append($page);
         }
     }
 
     // 화면 크기에 맞게 사이즈를 계산하고 적용하는 함수
     function resizeFlipbook() {
-        const containerWidth = $(window).width() * 0.9; // 화면 너비의 90% 사용
-        const containerHeight = $(window).height() * 0.8; // 화면 높이의 80% 사용
+        const containerWidth = $(window).width() * 0.9;
+        const containerHeight = $(window).height() * 0.8;
 
         let width = containerWidth;
         let height = width / FlipbookConfig.aspectRatio;
 
-        // 계산된 높이가 컨테이너보다 크면 높이 기준으로 재계산
         if (height > containerHeight) {
             height = containerHeight;
             width = height * FlipbookConfig.aspectRatio;
         }
 
-        // turn.js 사이즈 업데이트
         $book.turn('size', width, height);
     }
 
     function initFlipbook() {
         $book.turn({
-            width: FlipbookConfig.baseWidth,
-            height: FlipbookConfig.baseHeight,
+            // 주의: baseWidth 대신 bookWidth 사용 (Config 객체 기준)
+            width: FlipbookConfig.bookWidth,
+            height: FlipbookConfig.bookHeight,
             autoCenter: true,
             duration: 800,
             gradients: true,
             acceleration: true,
-            // 모바일/태블릿 대응을 위해 디스플레이 모드 설정
-            display: $(window).width() < 1000 ? 'single' : 'double'
-
+            display: $(window).width() < 1000 ? 'single' : 'double',
+            // 괄호 구조 수정됨
             when: {
-            // 1. 페이지 이동이 완료되면 하단 숫자를 변경
                 turned: function(event, page, view) {
                     let displayPage;
                     if ($book.turn('display') === 'single') {
                         displayPage = page;
                     } else {
-                        // 펼침면(double)일 때 번호 표시 로직 (예: 2-3)
                         if (page === 1) displayPage = "1";
                         else if (page >= FlipbookConfig.totalPage) displayPage = FlipbookConfig.totalPage;
                         else displayPage = `${page}-${page + 1}`;
                     }
                     $('#page-number').text(`${displayPage} / ${FlipbookConfig.totalPage}`);
-                },
+                }
+            } // when 끝
+        }); // turn 끝
 
-            }
-
-            
-        });
-
-        // 초기 실행 시 사이즈 조정
         resizeFlipbook();
 
+        // 클릭 이벤트 핸들러
         $book.on('click', function(e) {
+            // turn.js 내부 클릭 이벤트와 충돌할 수 있으므로 상황에 따라 조정 필요
             const offset = $book.offset();
             const x = e.pageX - offset.left;
             const width = $book.width();
@@ -114,17 +105,16 @@ $(document).ready(function() {
         });
     }
 
+    // 실행 순서
     buildPages();
     initFlipbook();
 
-    // 윈도우 리사이즈 이벤트 발생 시 호출
     $(window).on('resize', function() {
         resizeFlipbook();
     });
 
-    // 키보드 방향키로 페이지 넘기기 기능 추가
     $(window).keydown(function(e) {
-        if (e.keyCode === 37) $book.turn('previous'); // 왼쪽 방향키
-        else if (e.keyCode === 39) $book.turn('next'); // 오른쪽 방향키
+        if (e.keyCode === 37) $book.turn('previous');
+        else if (e.keyCode === 39) $book.turn('next');
     });
 });
