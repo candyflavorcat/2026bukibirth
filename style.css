@@ -22,7 +22,7 @@ body {
     background-size: contain; /* cover보다 contain이 이미지 잘림이 적습니다 */
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: inset 0px 0 20px rgba(0,0,0,0.1) !important;
+    box-shadow: inset 0px 0 20px rgba(0,0,0,0.1);
 }
 
 /* 북마크(탭) 디자인 */
