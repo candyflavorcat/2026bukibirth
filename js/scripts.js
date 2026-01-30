@@ -31,20 +31,20 @@ $(document).ready(function() {
                 'background-image': `url(${imgPath})`
             });
 
-            // --- 클릭 이벤트 추가 시작 ---
-            $page.on('click', function() {
-            // 현재 페이지가 짝수면 왼쪽 페이지(이전), 홀수면 오른쪽 페이지(다음)
-            // (첫 페이지가 1번인 double-page 모드 기준)
-                if (i % 2 === 0) {
+            // 페이지 클릭 네비게이션
+            $page.on('click', function(e) {
+                const pageWidth = $(this).width();
+                const clickX = e.offsetX;
+
+                if (clickX < pageWidth / 2) {
                     $book.turn('previous');
                 } else {
                     $book.turn('next');
                 }
             });
-            // --- 클릭 이벤트 추가 끝 ---
 
             
-    
+
 
             // 해당 페이지에 북마크 설정이 있다면 추가
             if (FlipbookConfig.bookmarks[i]) {
