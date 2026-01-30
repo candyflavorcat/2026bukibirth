@@ -89,6 +89,8 @@ $(document).ready(function() {
             
         });
 
+        $book.turn('peel', false);
+
         // 초기 실행 시 사이즈 조정
         resizeFlipbook();
 
