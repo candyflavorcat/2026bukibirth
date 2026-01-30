@@ -83,18 +83,20 @@ $(document).ready(function() {
 
         // 초기 실행 시 사이즈 조정
         resizeFlipbook();
+
+        $book.on('click', '.page', function(e) {
+            const pageWidth = $(this).width();
+            const clickX = e.offsetX;
+
+            if (clickX < pageWidth / 2) {
+                $book.turn('previous');
+            } else {
+                $book.turn('next');
+            }
+        });
+
     }
 
-    $book.on('click', '.page', function(e) {
-        const pageWidth = $(this).width();
-        const clickX = e.offsetX;
-
-        if (clickX < pageWidth / 2) {
-            $book.turn('previous');
-        } else {
-            $book.turn('next');
-        }
-    });
 
 
     buildPages();
