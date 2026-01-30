@@ -2,7 +2,7 @@
  * 플립북 설정 관리 객체
  */
 const FlipbookConfig = {
-    totalPage: 12,          // 전체 이미지 장수
+    totalPage: 120,          // 전체 이미지 장수
     imagePath: 'pages/page', // 이미지 경로 및 파일명 앞부분
     extension: '.jpg',      // 확장자
     bookWidth: 1000,        // 전체 가로 길이 (2페이지 펼침 기준)
