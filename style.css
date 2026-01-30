@@ -2,13 +2,12 @@
 body {
     margin: 0;
     padding: 0;
-    background: radial-gradient(circle, #f3e5f5 0%, #ffffff 70%) !important;
+    background: radial-gradient(circle, #f3e5f5 0%, #ffffff 70%);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: 'Apple SD Gothic Neo', sans-serif;
-    background-attachment: fixed;
 }
 
 /* 플립북 컨테이너 */
