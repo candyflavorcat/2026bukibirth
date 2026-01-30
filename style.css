@@ -1,34 +1,50 @@
+/* 기본 배경 설정 */
 body {
-  margin: 0;
-  background: #111;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, #444 0%, #111 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Apple SD Gothic Neo', sans-serif;
 }
 
-#book {
-  display: flex;
-  width: 90vw;
-  height: 90vh;
+/* 플립북 컨테이너 */
+#flipbook {
+    background-color: transparent;
 }
 
+/* 개별 페이지 스타일 */
 .page {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    background-color: #fff;
+    background-size: 100% 100%; /* 이미지를 페이지에 꽉 채움 */
+    background-repeat: no-repeat;
+    box-shadow: inset -5px 0 20px rgba(0,0,0,0.1); /* 책 안쪽 접히는 느낌 */
 }
 
-.page img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+/* 북마크(탭) 디자인 */
+.bookmark {
+    position: absolute;
+    top: 50px;
+    right: -15px; /* 페이지 밖으로 살짝 튀어나오게 */
+    background: #d32f2f;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    z-index: 100;
+    transition: all 0.3s ease;
 }
 
-#pageCounter {
-  color: white;
-  margin-top: 10px;
+.bookmark:hover {
+    right: -20px;
+    background: #ff5252;
+}
+
+/* 페이지가 넘어갈 때 뒷면 하얗게 방지 */
+.turn-page {
+    background-color: #ccc;
 }
