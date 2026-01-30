@@ -23,6 +23,9 @@ $(document).ready(function() {
 
     // 1. 페이지 자동 생성 로직
     function buildPages() {
+
+        let bookmarkCount = 0; // 북마크 순서 계산용
+        
         for (let i = 1; i <= FlipbookConfig.totalPage; i++) {
             const pageNum = String(i).padStart(3, '0');
             const imgPath = `${FlipbookConfig.imagePath}${pageNum}${FlipbookConfig.extension}`;
@@ -32,10 +35,13 @@ $(document).ready(function() {
                 'background-size': '100% 100%' // 이미지 꽉 차게 설정
             });
 
+            // 해당 페이지에 북마크 설정이 있다면 추가
             if (FlipbookConfig.bookmarks[i]) {
+                bookmarkCount++;
                 const label = FlipbookConfig.bookmarks[i];
-                const $bookmark = $(`<div class="bookmark">🔖 ${label}</div>`);
-                
+                // pos-N 클래스를 추가하여 높이를 다르게 설정
+                const $bookmark = $(`<div class="bookmark pos-${bookmarkCount}">${label}</div>`);
+            
                 $bookmark.on('click', function(e) {
                     e.stopPropagation();
                     $book.turn('page', i);
