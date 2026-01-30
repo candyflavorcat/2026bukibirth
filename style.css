@@ -60,3 +60,8 @@ body {
         top: 30px;
     }
 }
+
+.flipbook .turn-page,
+.flipbook .turn-region {
+    pointer-events: none;
+}
