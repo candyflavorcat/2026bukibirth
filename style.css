@@ -65,7 +65,7 @@ body {
 
 .bookmark-fixed:hover {
     background: #9575cd;
-    width: 60px; /* 마우스 올리면 살짝 더 삐져나옴 */
+    width: 60px; 
 }
 
 
