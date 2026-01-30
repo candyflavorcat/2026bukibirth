@@ -77,6 +77,15 @@ $(document).ready(function() {
             acceleration: true,
             // 모바일/태블릿 대응을 위해 디스플레이 모드 설정
             display: $(window).width() < 1000 ? 'single' : 'double'
+
+            when: {
+                start: function(event, pageObject, corner) {
+                // 모서리 드래그나 클릭으로 페이지를 넘기려 할 때(corner가 null이 아닐 때) 방지
+                    if (corner) {
+                        event.preventDefault();
+                    }
+                }
+            }
             
         });
 
