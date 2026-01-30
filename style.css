@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: radial-gradient(circle, #444 0%, #111 100%);
+    background: radial-gradient(circle, #f3e5f5 0%, #e1bee7 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@ body {
     background-size: contain; /* cover보다 contain이 이미지 잘림이 적습니다 */
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: inset -5px 0 20px rgba(0,0,0,0.1); /* 책 안쪽 접히는 느낌 */
+    box-shadow: inset -2px 0 10px rgba(0,0,0,0.05);
 }
 
 /* 북마크(탭) 디자인 */
@@ -29,7 +29,7 @@ body {
     position: absolute;
     top: 50px;
     right: -15px; /* 페이지 밖으로 살짝 튀어나오게 */
-    background: #d32f2f;
+    background: #7b1fa2;
     color: #fff;
     padding: 6px 12px;
     font-size: 13px;
