@@ -31,8 +31,6 @@ $(document).ready(function() {
                 'background-image': `url(${imgPath})`
             });
 
-            
-
 
             // 해당 페이지에 북마크 설정이 있다면 추가
             if (FlipbookConfig.bookmarks[i]) {
@@ -96,11 +94,7 @@ $(document).ready(function() {
                 $book.turn('next');
             }
         });
-
-
     }
-
-
 
     buildPages();
     initFlipbook();
