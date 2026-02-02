@@ -39,7 +39,9 @@ body {
 #bookmark-container {
     position: absolute;
     left: 100%; /* 플립북이 끝나는 지점부터 시작 */
-    top: 20;
+    top: 50;
+    transform: translateY(-50%);
+    height: auto;
     height: 100%;
     z-index: 100; /* 페이지보다 위에 표시 */
 }
@@ -90,4 +92,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media (max-width: 800px) {
+    #bookmark-container {
+        left: auto;
+        right: -60px;
+    }
 }
