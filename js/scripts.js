@@ -124,7 +124,6 @@ $(document).ready(function() {
         });
     }
 
-    // 실행 순서
     buildPages();
     initFlipbook();
 
