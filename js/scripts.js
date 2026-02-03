@@ -43,7 +43,7 @@ $(document).ready(function() {
     const currentAspectRatio = isSingle ? (FlipbookConfig.aspectRatio / 2) : FlipbookConfig.aspectRatio;
 
     // 2. 컨테이너 여백 설정
-    const paddingW = $(window).width() < 600 ? 0.95 : 0.9;
+    const paddingW = $(window).width() < 600 ? 0.85 : 0.8;
     const paddingH = $(window).width() < 600 ? 0.7 : 0.8;
 
     const containerWidth = $(window).width() * paddingW;
