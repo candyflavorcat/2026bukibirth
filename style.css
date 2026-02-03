@@ -38,7 +38,7 @@ body {
 /* 북마크 컨테이너: 플립북 오른쪽 끝에 고정 */
 #bookmark-container {
     position: absolute;
-    left: 100%; /* 플립북이 끝나는 지점부터 시작 */
+    right:-50px /* 플립북이 끝나는 지점부터 시작 */
     top: 50px;
     display: flex;
     flex-direction: column;
