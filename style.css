@@ -39,11 +39,13 @@ body {
 #bookmark-container {
     position: absolute;
     left: 100%; /* 플립북이 끝나는 지점부터 시작 */
-    top: 50;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
     transform: translateY(-50%);
     height: auto;
     height: 100%;
-    z-index: 100; /* 페이지보다 위에 표시 */
+    z-index: 1000; /* 페이지보다 위에 표시 */
 }
 
 /* 북마크 개별 스타일 */
