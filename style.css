@@ -44,7 +44,7 @@ body {
     transform: translateY(-50%);
     height: auto;
     height: 100%;
-    z-index: 1000; /* 페이지보다 위에 표시 */
+    z-index: 1000; /* 페이지보다 위에 표시 */ 
 }
 
 /* 북마크 개별 스타일 */
