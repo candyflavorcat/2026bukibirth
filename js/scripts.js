@@ -125,6 +125,7 @@ $(document).ready(function() {
     }
 
     buildPages();
+    initBookmarks();
     initFlipbook();
 
     $(window).on('resize', function() {
