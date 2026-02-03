@@ -8,8 +8,7 @@ body {
     align-items: center;
     height: 100vh;
     font-family: 'Apple SD Gothic Neo', sans-serif;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 /* 2. 플립북과 번호를 세로로 나열하고 중앙 정렬 */
