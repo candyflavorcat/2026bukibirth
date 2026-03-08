@@ -39,9 +39,9 @@ $(document).ready(function() {
     }
 
     // 화면 크기에 맞게 사이즈를 계산하고 적용하는 함수
-    function resizeFlipbook() {
-    const isSingle = $book.turn('display') === 'single';
-    const currentAspectRatio = isSingle ? (FlipbookConfig.aspectRatio / 2) : FlipbookConfig.aspectRatio;
+    //function resizeFlipbook() {
+    //const isSingle = $book.turn('display') === 'single';
+    //const currentAspectRatio = isSingle ? (FlipbookConfig.aspectRatio / 2) : FlipbookConfig.aspectRatio;
 
     // 2. 컨테이너 여백 설정
     const paddingW = $(window).width() < 600 ? 0.85 : 0.8;
