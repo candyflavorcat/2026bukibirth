@@ -5,9 +5,9 @@ const FlipbookConfig = {
     totalPage: 174,          // 전체 이미지 장수
     imagePath: 'pages/page', // 이미지 경로 및 파일명 앞부분
     extension: '.jpg',      // 확장자
-    bookWidth: 3350,        // 전체 가로 길이 
+    bookWidth: 3380,        // 전체 가로 길이 
     bookHeight: 2250,        // 세로 길이
-    aspectRatio: 3350 / 2250,
+    aspectRatio: 3380 / 2250,
     
 
     // 북마크 설정 (페이지 번호 : 라벨명)
