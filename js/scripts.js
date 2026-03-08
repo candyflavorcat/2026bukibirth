@@ -8,6 +8,7 @@ const FlipbookConfig = {
     bookWidth: 2250,        // 전체 가로 길이 
     bookHeight: 3000,        // 세로 길이
     aspectRatio: 2250 / 3000,
+    
 
     // 북마크 설정 (페이지 번호 : 라벨명)
     bookmarks: {
