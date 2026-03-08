@@ -7,7 +7,7 @@ const FlipbookConfig = {
     extension: '.jpg',      // 확장자
     bookWidth: 2800,        // 전체 가로 길이 
     bookHeight: 2250,        // 세로 길이
-    aspectRatio: 3000 / 2250,
+    aspectRatio: 2800 / 2250,
     
 
     // 북마크 설정 (페이지 번호 : 라벨명)
