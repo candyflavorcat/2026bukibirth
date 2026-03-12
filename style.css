@@ -75,7 +75,7 @@ body {
 
 
 /* 페이지 번호 디자인 */
-#page-number {
+#page-control {
     margin-top: 30px;
     font-size: 16px;
     color: #555;
@@ -87,6 +87,30 @@ body {
     letter-spacing: 1px;
     display: block;
     transition: all 0.3s ease;
+}
+
+#page-input {
+    width: 45px;
+    border: none;
+    background: #fff; /* 입력창임을 알 수 있게 살짝 배경 추가 */
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    outline: none;
+    padding: 2px 0;
+}
+
+/* 숫자 옆 화살표 제거 */
+#page-input::-webkit-inner-spin-button,
+#page-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#page-total {
+    font-weight: 500;
+    color: #888;
 }
 
 /* 컨테이너 중앙 정렬 보정 */
