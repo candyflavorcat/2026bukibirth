@@ -95,6 +95,8 @@ $(document).ready(function() {
             display: $(window).width() < 1000 ? 'single' : 'double',
             when: {
                 turned: function(event, page, view) {
+                    $pageInput.val(page);
+                    $('#page-total').text(` / ${FlipbookConfig.totalPage}`);
                     let displayPage;
                     if ($book.turn('display') === 'single') {
                         displayPage = page;
@@ -107,6 +109,20 @@ $(document).ready(function() {
                 }
             } // when 끝
         }); // turn 끝
+
+        $pageInput.on('keydown', function(e) {
+            if (e.keyCode === 13) { // Enter 키를 눌렀을 때
+                const targetPage = parseInt($(this).val());
+            
+                if (targetPage >= 1 && targetPage <= FlipbookConfig.totalPage) {
+                    $book.turn('page', targetPage);
+                    $(this).blur(); // 포커스 해제
+                } else {
+                    alert(`1 ~ ${FlipbookConfig.totalPage} 사이의 번호를 입력해주세요.`);
+                    $pageInput.val($book.turn('page')); // 현재 페이지로 되돌리기
+                }
+            }
+        });
 
         setTimeout(resizeFlipbook, 100);
 
